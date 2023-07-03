@@ -1,8 +1,6 @@
 #pragma once
-#define WORLD_SIZE_Y 500
-#define WORLD_SIZE_X 500
-#include <unordered_map>
 #include <iostream>
+#include "Bmap.h"
 #include "Creature.h"
 
 class World
@@ -14,46 +12,56 @@ class World
 			static World instance;
 			return instance;
 		}
-
-		struct Death_Zone
-		{
-			Pos origin;
-			unsigned short width;
-			unsigned short height;
-		};
-
 		/*
-		* World spoecific definitions:
-		* population_s: size of population
-		* cycles: amount of nueral fires a generation
-		* fallout: odds creature is removed anyways
-		* mutation_rate: odds a random nueron is inserted during the reproductive process
-		* seed: seed for random number generator
-		* death_zone: rectangle defined by origin height and width
+		* World Variables
 		*/
+		//See Map.h
+		Map world_space;
+
+		//creatures alive currently in world
+		std::vector<std::shared_ptr<Creature>> creatures;
+
+		//inital population size
 		unsigned short population_s;
+
+		//number of neuron fires per generation
 		unsigned short cycles;
+
+		//Chance creatures die anyways
 		float fallout;
+
+		//odds a random neuron is factored into the reproduction process
 		float mutation_rate;
+
+		//rng seed for rng things
 		int seed;
-		Death_Zone death_zone;
-		
+
 		/*
-		* Fuctions:
-		*  Mostly sef-explaitory
+		* 
+		* Member functions of world
+		* 
+		* World refactored to only control lifecycle, removed map operations
 		*/
 
-		bool is_in_death_zone(Pos pos);
-		std::vector<Creature*> world_space;
-		bool is_pos_open(Pos pos);
-		Pos get_rand_pos(int seed);
-		void cull();
+		/*
+		* Cull kills creatures in the "kill zone"
+		*/
+		int cull();
+
+		/*
+		* Fires 1 creature neurons 1 time
+		*/
 		void run_cycle();
-		void reproduce(Creature* c1, Creature* c2);
+
+		/*
+		* Mixes genes of 2 parents, adds offspring to the map
+		*/
+		//void reproduce(Creature* c1, Creature* c2);
 
 	private:
 		 World(){
 			std::cout << "Making worldspace..." << std::endl;
+			std::srand(seed);
 
 
 			population_s = 10;
@@ -61,17 +69,15 @@ class World
 			mutation_rate = 0.001f;
 			seed = 293840;
 			cycles = 50;
-			
-			death_zone.origin = Pos{ 250, 125 };
-			death_zone.height = 125;
-			death_zone.width = 250;
 
 
 			for (int i = 0; i < population_s; i++)
 			{
-				Creature* tmp = new Creature();
-				tmp->set_pos(get_rand_pos(seed));
-				world_space.push_back(tmp);
+				std::shared_ptr<Creature> tmp(new Creature);
+				Point pt = world_space.get_rand_point();
+				tmp->set_point(pt.first,pt.second);
+				world_space.map.emplace(pt,tmp);
+				creatures.push_back(tmp);
 			}
 		};
 };
