@@ -1,15 +1,16 @@
-#include "Creature.h"
-#include "world.h"
+#include "creature.h"
+#include "Bmap.h"
+#include <iostream>
 
-void Creature::set_pos(Pos pos)
+void Creature::set_point(unsigned short x, unsigned short y)
 {
-	this->pos.x = pos.x;
-	this->pos.y = pos.y;
+	this->point.first = x;
+	this->point.second = y;
 }
 
-Pos Creature::get_pos()
+Point Creature::get_point()
 {
-	return this->pos;
+	return this->point;
 }
 
 Color Creature::get_rand_color() 
@@ -22,7 +23,7 @@ Color Creature::get_rand_color()
 	return color;
 }
 
-void Creature::move_creature(Neuron * mn)
+void Creature::move_creature(std::shared_ptr<Neuron> mn)
 {
 	switch(mn->type) 
 	{
@@ -45,44 +46,50 @@ void Creature::move_creature(Neuron * mn)
 
 void Creature::move_up()
 {
-	Pos pos = this->get_pos();
-	pos.y++;
-	if (World::get_world().is_pos_open(pos))
+	Point pos = this->get_point();
+	pos.second = pos.second + 1;
+
+	if (Map::get_map().is_pos_open(pos))
 	{
-		this->set_pos(pos);
+		Map::get_map().update_map_key(this->point, pos);
+		this->set_point(pos.first, pos.second);
 	}
 }
 
 void Creature::move_right()
 {
-	Pos pos = this->get_pos();
-	pos.x++;
-	if (World::get_world().is_pos_open(pos))
+	Point pos = this->get_point();
+	pos.first++;
+	if (Map::get_map().is_pos_open(pos))
 	{
-		this->set_pos(pos);
+		Map::get_map().update_map_key(this->point, pos);
+		this->set_point(pos.first, pos.second);
 	}
 }
 
 void Creature::move_left()
 {
-	Pos pos = this->get_pos();
-	pos.x--;
-	if (World::get_world().is_pos_open(pos))
+	Point pos = this->get_point();
+	pos.first--;
+	if (Map::get_map().is_pos_open(pos))
 	{
-		this->set_pos(pos);
+		Map::get_map().update_map_key(this->point, pos);
+		this->set_point(pos.first, pos.second);
 	}
 }
 
 void Creature::move_down()
 {
-	Pos pos = this->get_pos();
-	pos.y--;
-	if (World::get_world().is_pos_open(pos))
+	Point pos = this->get_point();
+	pos.second--;
+	if (Map::get_map().is_pos_open(pos))
 	{
-		this->set_pos(pos);
+		Map::get_map().update_map_key(this->point, pos);
+		this->set_point(pos.first, pos.second);
 	}
 }
 
+//on the docket for re-factor
 void Creature::fire_n()
 {
 	unsigned short rnd = rand() % neurons.size();
