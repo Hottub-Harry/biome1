@@ -1,7 +1,6 @@
-#pragma once
 #include <iostream>
 #include "Bmap.h"
-#include "Creature.h"
+#include "creature.h"
 
 class World
 {
@@ -76,7 +75,7 @@ class World
 				std::shared_ptr<Creature> tmp(new Creature);
 				Point pt = world_space.get_rand_point();
 				tmp->set_point(pt.first,pt.second);
-				world_space.map.emplace(pt,tmp);
+				Map::get_map().map.emplace(pt, tmp);
 				creatures.push_back(tmp);
 			}
 		};

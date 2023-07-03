@@ -24,6 +24,8 @@ void World::run_cycle()
 	}
 }
 
+//TODO: Refactor to work with map
+
 //void World::reproduce(Creature* c1, Creature* c2)
 //{
 //	int split = c1->neurons.size() / 2;

@@ -16,9 +16,5 @@ class Neuron
 	{
 		type = mn_type(rand() % 4);
 	}
-	~Neuron()
-	{
-		delete(this);
-	}
 };
 

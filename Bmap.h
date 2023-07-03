@@ -4,30 +4,10 @@
 #include <memory>
 #include "creature.h"
 #include "common_structs.h"
-/*
-* std::pair point (x,y) to serve as the key for the map.
-* 
-* Death zone that is placed on the map is also defined in this header
-* 
-*  ______________
-* |				| ^height
-* |		*		| <width>
-* |				| * -> origin
-* _______________
-*
-*/
 
 class Map
 {
 	public:
-
-		/*
-		* Vars:
-		*/
-		std::map< Point, std::shared_ptr<Creature> > map;
-		unsigned short width;
-		unsigned short height;
-		Death_Zone death_zone{};
 
 		/*
 		* SINGLETON FOR MAP
@@ -37,6 +17,14 @@ class Map
 			static Map instance;
 			return instance;
 		}
+
+		/*
+		* Vars:
+		*/
+		std::map< Point, std::shared_ptr<Creature> > map;
+		unsigned short width;
+		unsigned short height;
+		Death_Zone death_zone{};
 
 		/*
 		* Setters/getters for world width/height

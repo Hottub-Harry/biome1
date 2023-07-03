@@ -1,6 +1,19 @@
 #pragma once
 #include <utility>
-
+/*
+* std::pair point (x,y) to serve as the key for the map.
+*
+* Death zone that is placed on the map is also defined in this header
+*
+*  ______________
+* |				| ^height
+* |		*		| <width>
+* |				| * -> origin
+* _______________
+* 
+* Color: RGB value (will come in handy later)
+*
+*/
 typedef std::pair<unsigned short, unsigned short> Point;
 
 struct Color

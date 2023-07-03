@@ -1,4 +1,4 @@
-#include "Creature.h"
+#include "creature.h"
 #include "Bmap.h"
 #include <iostream>
 
@@ -51,8 +51,8 @@ void Creature::move_up()
 
 	if (Map::get_map().is_pos_open(pos))
 	{
-		Map::get_map().update_map_key(get_point(), pos);
-		this->set_point(pos.second, pos.first);
+		Map::get_map().update_map_key(this->point, pos);
+		this->set_point(pos.first, pos.second);
 	}
 }
 
@@ -62,8 +62,8 @@ void Creature::move_right()
 	pos.first++;
 	if (Map::get_map().is_pos_open(pos))
 	{
-		Map::get_map().update_map_key(get_point(), pos);
-		this->set_point(pos.second, pos.first);
+		Map::get_map().update_map_key(this->point, pos);
+		this->set_point(pos.first, pos.second);
 	}
 }
 
@@ -73,8 +73,8 @@ void Creature::move_left()
 	pos.first--;
 	if (Map::get_map().is_pos_open(pos))
 	{
-		Map::get_map().update_map_key(get_point(), pos);
-		this->set_point(pos.second, pos.first);
+		Map::get_map().update_map_key(this->point, pos);
+		this->set_point(pos.first, pos.second);
 	}
 }
 
@@ -84,8 +84,8 @@ void Creature::move_down()
 	pos.second--;
 	if (Map::get_map().is_pos_open(pos))
 	{
-		Map::get_map().update_map_key(get_point(), pos);
-		this->set_point(pos.second, pos.first);
+		Map::get_map().update_map_key(this->point, pos);
+		this->set_point(pos.first, pos.second);
 	}
 }
 
