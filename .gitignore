@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#VS Project Files
+biome1.sln
+biome1.vcxproj
+biome1.vcxproj.filters
+CppProperties.json
