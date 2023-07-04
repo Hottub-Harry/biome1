@@ -3,7 +3,6 @@
 #include <utility>
 #include <memory>
 #include "neuron.h"
-#include "Bmap.h"
 #include "common_structs.h"
 
 class Creature

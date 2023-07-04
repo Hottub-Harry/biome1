@@ -20,4 +20,5 @@ int main(void)
 	{
 		std::cout << "X: " << creature->point.first << " Y: " << creature->point.second << std::endl;
 	}
+	system("pause");
 }
