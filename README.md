@@ -19,7 +19,7 @@ This is done so we have faster lookup speeds when getting the creatures and thei
 it is O(logn) the time complexity of std::map. When a creature needs inserted or deleted from the world, instead of iterating the map, I simply grab the position from the vector (we must iterate the vector to preform creature operations anyways)
 and pass it to the hash table, and vector.erase() for deletion. When the pointer is removed from both locations, it automatically deallocates the creature from memory via smart pointer.
 
-#Neural Networks
+# Neural Networks
 
 I hate to burst your bubble, but these barely meet the definition of neural networks, I just call them that. Currently, there are 4 motor neuron types that control the movement of the creature. The only connection
 they have with each other is firing order. The order of firing and the nueron types themselves are inheirited from parents, save for the original generation which is the equivalent of lab-grown creatures. The neurons
