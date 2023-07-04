@@ -360,6 +360,7 @@ MigrationBackup/
 .ionide/
 
 # Fody - auto-generated XML schema
+<<<<<<< HEAD
 FodyWeavers.xsd
 
 #VS Project Files
@@ -367,3 +368,6 @@ biome1.sln
 biome1.vcxproj
 biome1.vcxproj.filters
 CppProperties.json
+=======
+FodyWeavers.xsd
+>>>>>>> 31f9c1a (Add .gitattributes and .gitignore.)
