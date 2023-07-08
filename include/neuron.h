@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cstdlib>
 
 enum mn_type
 {

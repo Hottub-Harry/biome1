@@ -1,6 +1,5 @@
 #include "Bmap.h"
 #include <iostream>
-#include <assert.h>
 
 bool Map::is_pos_open(Point point)
 {
@@ -44,7 +43,6 @@ bool Map::is_in_death_zone(Point point)
 void Map::update_map_key(Point old_point, Point new_point)
 {
 	auto nh = map.extract(old_point);
-	assert(nh);
 	nh.key() = new_point;
 	map.insert(std::move(nh));
 }

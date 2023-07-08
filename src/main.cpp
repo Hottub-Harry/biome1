@@ -1,7 +1,7 @@
 #include "world.h"
 #include <iostream>
 
-int main(void)
+int main()
 {
 	World world = World::get_world();
 	for (auto& creature : world.creatures)
@@ -20,5 +20,4 @@ int main(void)
 	{
 		std::cout << "X: " << creature->point.first << " Y: " << creature->point.second << std::endl;
 	}
-	system("pause");
 }

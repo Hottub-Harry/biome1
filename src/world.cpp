@@ -3,7 +3,7 @@
 int World::cull()
 {
 	int death_count = 0;
-	for (int i = 0; i < creatures.size(); i++)
+	for (int i = 0; i < (int)creatures.size(); i++)
 	{
 		if (Map::get_map().is_in_death_zone(creatures.at(i)->point))
 		{

@@ -359,15 +359,6 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# Fody - auto-generated XML schema
-<<<<<<< HEAD
-FodyWeavers.xsd
-
-#VS Project Files
-biome1.sln
-biome1.vcxproj
-biome1.vcxproj.filters
-CppProperties.json
-=======
-FodyWeavers.xsd
->>>>>>> 31f9c1a (Add .gitattributes and .gitignore.)
+#build folder for auto generated cmake stuff
+build
+cmake-build-debug
