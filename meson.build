@@ -9,9 +9,8 @@ project('biome1', 'cpp',
     project_test_sources = []
 
     #all include files in top level directory
-    inc = [include_directories('include')]
+    inc = include_directories('include')
 
-    subdir('include')
     subdir('src')
 
     executable('biome1', sources: project_sources, include_directories: inc)

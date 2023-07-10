@@ -7,6 +7,7 @@
     ])
 
     project_sources += main_source
+    
     main_lib = static_library(
         'main',
         main_source,

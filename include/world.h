@@ -68,7 +68,7 @@ class World
 			population_s = 10;
 			fallout = 0.0f;
 			mutation_rate = 0.001f;
-			seed = 293840;
+			seed = 29385;
 			cycles = 50;
 
 

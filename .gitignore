@@ -362,3 +362,5 @@ MigrationBackup/
 #build folder for auto generated cmake stuff
 build
 cmake-build-debug
+builddir
+.vscode
