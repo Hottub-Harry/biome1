@@ -21,6 +21,7 @@ class Creature
 		Color get_rand_color();
 		void set_point(unsigned short x, unsigned short y);
 		Point get_point();
+		//std::shared_ptr<Creature> mate(std::shared_ptr<Creature> creature);
 
 		void move_creature(std::shared_ptr<Neuron> mn);
 		void fire_n();

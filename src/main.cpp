@@ -3,7 +3,11 @@
 
 int main()
 {
+	std::srand(145);
 	World world = World::get_world();
+	world.set_seed(15);
+	world.init();
+
 	for (auto& creature : world.creatures)
 	{
 		std::cout << "X: " << creature->point.first << " Y: " << creature->point.second << std::endl;

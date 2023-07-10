@@ -95,3 +95,11 @@ void Creature::fire_n()
 	unsigned short rnd = rand() % neurons.size();
 	move_creature(neurons.at(rnd));
 }
+
+/*
+* use .mate on one parent to return a random mix between two parents
+*/
+//std::shared_ptr<Creature> Creature::mate(shared_ptr<Creature> creature)
+//{
+	
+//}

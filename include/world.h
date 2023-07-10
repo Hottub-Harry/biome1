@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
-#include <cstdlib>
+#include <memory>
+#include "common_structs.h"
 #include "Bmap.h"
 #include "creature.h"
 
@@ -13,29 +14,20 @@ class World
 			static World instance;
 			return instance;
 		}
+
 		/*
 		* World Variables
 		*/
+
 		//See Map.h
 		Map world_space;
-
-		//creatures alive currently in world
 		std::vector<std::shared_ptr<Creature>> creatures;
-
-		//inital population size
 		unsigned short population_s;
-
-		//number of neuron fires per generation
 		unsigned short cycles;
-
-		//Chance creatures die anyways
 		float fallout;
-
-		//odds a random neuron is factored into the reproduction process
 		float mutation_rate;
-
-		//rng seed for rng things
 		int seed;
+		int generations;
 
 		/*
 		* 
@@ -44,41 +36,28 @@ class World
 		* World refactored to only control lifecycle, removed map operations
 		*/
 
-		/*
-		* Cull kills creatures in the "kill zone"
-		*/
 		int cull();
-
-		/*
-		* Fires 1 creature neurons 1 time
-		*/
 		void run_cycle();
+		void add_creature(Point point, std::shared_ptr<Creature> creature);
+		void init();
+		void set_starting_population(unsigned short pop);
+		void set_fallout(float f);
+		void set_mutation_rate(float mut);
+		void set_seed(int s);
+		void set_cycles(int c);
+		void set_generations(int g);
 
-		/*
-		* Mixes genes of 2 parents, adds offspring to the map
-		*/
-		//void reproduce(Creature* c1, Creature* c2);
 
 	private:
 		 World(){
-			std::cout << "Making worldspace..." << std::endl;
-			std::srand(seed);
-
-
+			std::cout << "Making worldspace... VERSION 0.1" << std::endl;
+			/*
+			* Defaults
+			*/
 			population_s = 10;
 			fallout = 0.0f;
 			mutation_rate = 0.001f;
 			seed = 29385;
 			cycles = 50;
-
-
-			for (int i = 0; i < population_s; i++)
-			{
-				std::shared_ptr<Creature> tmp(new Creature);
-				Point pt = world_space.get_rand_point();
-				tmp->set_point(pt.first,pt.second);
-				Map::get_map().map.emplace(pt, tmp);
-				creatures.push_back(tmp);
-			}
 		};
 };
