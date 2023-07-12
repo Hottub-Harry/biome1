@@ -1,17 +1,24 @@
 #pragma once
 #include <iostream>
 #include <memory>
+#include <math.h>
 #include "common_structs.h"
 #include "Bmap.h"
 #include "creature.h"
 
 class World
 {
+	private:
+		static World * instance;
+
 	public:
 
-		static World& get_world()
+		static World * get_world()
 		{
-			static World instance;
+			if(instance == nullptr)
+			{
+				instance = new World();
+			}
 			return instance;
 		}
 
@@ -38,6 +45,7 @@ class World
 
 		int cull();
 		void run_cycle();
+		void run_generation();
 		void add_creature(Point point, std::shared_ptr<Creature> creature);
 		void init();
 		void set_starting_population(unsigned short pop);
@@ -46,18 +54,17 @@ class World
 		void set_seed(int s);
 		void set_cycles(int c);
 		void set_generations(int g);
+        void mating_cycle();
+		void randomize_positions();
 
-
-	private:
+    private:
 		 World(){
 			std::cout << "Making worldspace... VERSION 0.1" << std::endl;
-			/*
-			* Defaults
-			*/
 			population_s = 10;
 			fallout = 0.0f;
 			mutation_rate = 0.001f;
 			seed = 29385;
 			cycles = 50;
+			generations = 100;
 		};
 };

@@ -1,6 +1,8 @@
 #include "Bmap.h"
 #include <iostream>
 
+Map * Map::instance = nullptr;
+
 bool Map::is_pos_open(Point point)
 {
 	if (point.first > width || point.second > height || point.first < 0 || point.second < 0)

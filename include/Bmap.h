@@ -7,14 +7,20 @@
 
 class Map
 {
+	private:
+		static Map * instance;
+
 	public:
 
 		/*
 		* SINGLETON FOR MAP
 		*/
-		static Map& get_map()
+		static Map * get_map()
 		{
-			static Map instance;
+			if(instance == nullptr)
+			{
+				instance = new Map();
+			}
 			return instance;
 		}
 
