@@ -364,3 +364,4 @@ build
 cmake-build-debug
 builddir
 .vscode
+README.md
