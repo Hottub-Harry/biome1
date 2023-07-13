@@ -3,7 +3,11 @@
 
 # Getting started
 
-Clone this repository, and include the files in your project.
+Clone this repository, and include the files in your project, or fork this repository and experiment with it yourself.
+
+You should download the Meson build system in order to build the project and run it on your system. 
+
+PSA: Cmake is bad. Stop using it.
 
 # Vision
 
@@ -28,7 +32,47 @@ each creature has are included in a vector within the Creature class. They will 
 
 # Methods
 
-TODO
+I will not go over the entirety of the methods here, but I will give a general overview of how to use this project.
+
+To start `#include "world.h"`. The naming of this file is sure to change to `biome1.h`, because world is ambiguous. `world.h` includes almost every other file in the project, and it manages the lifecycle of everything.
+
+For example:
+```
+#include "world.h"
+
+int main()
+{
+  //returns your instance of world -- is a singleton
+  World world = world.get_world();
+  world.set_seed(1337) //set the seed for the random number generator
+  world.set_starting_population(50); //starting population of creatures in the world
+  world.set_cycles(100); //should be suffcient for the space provided -- # of nueron fires b4 cull/mating
+  world.set_generations(50); //however many generations you wish to run
+  world.init(); //runs setup tasks for the world. Randomizes locations and neurons of creatures.
+
+  world.run_generation(); //runs the amount of generations specified   
+
+}
+```
+
+So, in a few simple lines of code, you can begin training the creatures (via natural selection) to avoid the "death zone". 
+
+While the `world.run_generation()` command is handy, it is opinionated. If you want to run your own generations, with custom settings, you certainly can.
+
+The "death_zone" needs some small tweaks yet, but it is defaulted to the bottom half of the world space.
+
+# Lifecycle methods
+
+There are a few things that happen during the life of the creature. The first of which is being born. The generation 0 is crafted by god (you), and has all of their colors and brain parts randomly placed. Every subsequent generation is determined by the parents. The children of a parent will randomly have neurons assigned from each parent, and the color is mixed. 
+
+After being born, the creatures will worm their way around, likely moving randomly at first. This phase is described in `run_cycle()`. Each creature fires its neurons and moves around. Perhaps I can add food or predation mechanics here later.
+
+After the roaming period, the `cull()` is preformed.
+
+I will just leave this here:
+*cull : noun  a selective slaughter of wild animals.*
+
+After the cull a mating cycle is initiated. The creatures mate with those that are closest to them. If one is left without a mate, tough luck. The children are then born into a world of peril.
 
 # Contribute
 
