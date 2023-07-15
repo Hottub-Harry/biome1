@@ -76,7 +76,7 @@ After the cull a mating cycle is initiated. The creatures mate with those that a
 
 # Contribute
 
-Code reviews are welcome, forks are encouraged, ideas are celebrated. This is mainly a personal project of mine, but if someone comes along more senior that has experience reviewing code, by all means say something. 
+Code reviews are welcome, forks are encouraged, ideas are celebrated. Could use a poor soul to write some unit tests in gTest. 
 
 # Roadmap
 
