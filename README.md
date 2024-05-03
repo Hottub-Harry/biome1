@@ -7,7 +7,6 @@ Clone this repository, and include the files in your project, or fork this repos
 
 You should download the Meson build system in order to build the project and run it on your system. 
 
-PSA: Cmake is bad. Stop using it.
 
 # Vision
 
@@ -76,8 +75,16 @@ After the cull a mating cycle is initiated. The creatures mate with those that a
 
 # Contribute
 
-Code reviews are welcome, forks are encouraged, ideas are celebrated. Could use a poor soul to write some unit tests in gTest. 
+Code reviews are welcome, forks are encouraged, ideas are celebrated. Could use a poor soul to write some unit tests in gTest. Would like to open collaboration about refactoring ideas.
 
 # Roadmap
 
-There is still a lot to be done. Tests, and a GUI is in the works. Adding interesting new neuron types as well as other methods to control populations.
+Hello everyone, I am reviving this project. I was caught up in a lot of work and grad school things, and now with the semester over, I will have 8-10 hours a week to throw at the project. With that out of the way, we can begin talking about exciting refactors in the works. 
+
+## Upcoming refactors
+
+Firstly, I would like to change how neurons work. Rather than a sequential firing, I want to move more towards a conventional neural network for each creature. The children will inheirit weight values rather than a mix of neuron types from parents. 
+
+Secondly, I would like to move the project into the rust programming language. This way, the project can have modularity and better natural growth, and peices can offer better reuse to others via the rust crates ecosystem. This starts with certain "footings" being put in place. Firstly, making a neuron crate from nothing but the standard library. The name has not been decided, but I am leaning towards the name tinyNeurons. It will be lightweight and have no dependancies. 
+
+With this being said, these large refactors means that this repository will no longer be supported by myself. Instead I will set up a few new repositories, and dedicate my time there. This repository will remain, and will still accept pull requests from people who wish to maintain it, as well as host some general project discussion. 
